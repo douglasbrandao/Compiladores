@@ -1,0 +1,3 @@
+run
+display("Hello World\n");
+exit

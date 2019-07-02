@@ -1,0 +1,10 @@
+run
+integer n1;
+integer n2;
+integer n3;
+input(n1);
+input(n2);
+n3 = (n1 + n2) * n2;
+display(n3);
+display("\n");
+exit

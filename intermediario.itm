@@ -1,0 +1,8 @@
+INTEIRO n1
+INTEIRO n2
+n1 := 5
+n2 := 3
+_C11: if n1 > n2 goto _C12
+ESCREVA "n1 e menor ou igual n2\n"
+_C12:
+ESCREVA "maior que n1\n"

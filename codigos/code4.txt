@@ -1,0 +1,6 @@
+run
+integer n;
+integer i = 2;
+n = 3;
+integer f = (2 * 3) + 5 + n;
+exit
