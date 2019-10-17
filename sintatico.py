@@ -116,9 +116,14 @@ class analiseSintatica:
                         self.erros = True
                         break
             else:
-                self.log.append(f'Erro sintático: Token {fila[i][0]} inesperado na linha: {fila[i][2]}, coluna: {fila[i][3].strip()}')
-                self.log_erros.append(f'Erro sintático: Token {fila[i][0]} inesperado na linha: {fila[i][2]}, coluna: {fila[i][3].strip()}')
-                self.erros = True
+                if i == len(fila):
+                    self.log.append(f'Erro sintático: Token {fila[i-1][0]} inesperado na linha: {fila[i-1][2]}, coluna: {fila[i-1][3].strip()}')
+                    self.log_erros.append(f'Erro sintático: Token {fila[i-1][0]} inesperado na linha: {fila[i-1][2]}, coluna: {fila[i-1][3].strip()}')
+                    self.erros = True
+                else:
+                    self.log.append(f'Erro sintático: Token {fila[i][0]} inesperado na linha: {fila[i][2]}, coluna: {fila[i][3].strip()}')
+                    self.log_erros.append(f'Erro sintático: Token {fila[i][0]} inesperado na linha: {fila[i][2]}, coluna: {fila[i][3].strip()}')
+                    self.erros = True
                 break
 
     def mostraLog(self):
