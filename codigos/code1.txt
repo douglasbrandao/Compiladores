@@ -1,10 +1,4 @@
 run
-integer n1 = 5;
-integer n2 = 3;
-if(n1 <= n2){
-    display("n1 e menor ou igual n2\n");
-}
-else{
-    display("maior que n1\n");
-}
+integer n1;
+input(n1);
 exit

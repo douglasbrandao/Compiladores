@@ -1,38 +1,29 @@
+.data
+
+	.balign 4
+	n1: .word 0
+
+	.balign 4
+	pattern: .asciz "%d"
+
 .text
 .global main
 
 main:
 
-push {ip, lr}
+	push {ip, lr}
 
-ldr r1, =n1
-ldr r2, =n2
-cmp r1, r2
-bgt _C12
-ldr r0, =str0
-bl printf
+	ldr r0, =pattern
+	ldr r1, =n1
+	bl scanf
 
-pop {ip, pc}
-_C12:
-ldr r0, =str1
-bl printf
+	pop {ip, pc}
 
 
 end:
-mov r7, #1
-swi 0
+	mov r7, #1
+	swi 0
 
 
 .extern printf
 .extern scanf
-
-
-.data
-n1: .word 5
-n2: .word 3
-.balign 4
-str0: .asciz "n1 e menor ou igual n2\n"
-.balign 4
-str1: .asciz "maior que n1\n"
-.balign 4
-pattern: .asciz "%d"
