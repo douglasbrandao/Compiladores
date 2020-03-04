@@ -1,4 +1,5 @@
 run
-integer n1;
-input(n1);
+if(2 >= 3){
+    display("teste\n");
+}
 exit

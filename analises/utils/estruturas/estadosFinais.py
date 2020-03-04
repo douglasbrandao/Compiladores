@@ -11,6 +11,8 @@ estados_finais = {
     'q35': 'adicao',
     'q36': 'mult',
     'q37': 'divisao',
+    'q38': 'menor',
+    'q40': 'maior',
     'q39': 'menorigual',
     'q41': 'maiorigual',
     'q42': 'atribuicao',

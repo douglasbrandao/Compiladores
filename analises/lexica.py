@@ -70,13 +70,6 @@ class analiseLexica:
                     elif lexema == 'while':
                         if len(linha) == 5 or self.ftransicao(self.atual, linha[coluna+1]) is None:
                             self.atual = 'q33'
-                    # Verifica se após < ou > tem algum retorno, caso não tenha ele segue adiante
-                    elif self.atual == 'q40' or self.atual == 'q38':
-                        if self.ftransicao(self.atual, linha[coluna+1]) is None:
-                            print(msgErroLexico(lexema, linha_cont, coluna))
-                            self.atual = 'q0'
-                            lexema = ''
-                            self.erros += 1
 
                     # Se o estado atual é uma chave no dicionário, logo chegou no estado final
                     if self.atual in self.final.keys():
@@ -116,7 +109,27 @@ class analiseLexica:
                         elif self.atual == 'q54':  # Espaços e tabulações. Só ignora e segue o programa
                             self.atual = 'q0'
                             lexema = ''
-                        # Caso não seja nenhum dos casos acima, mas esteja no estado final
+                        # Verifica se após < ou > tem algum retorno, caso não tenha ele segue adiante
+                        elif self.atual == 'q40' and coluna+1 < len(linha):
+                            if self.ftransicao(self.atual, linha[coluna+1]) is not None:
+                                self.atual = 'q40'
+                            else:
+                                self.log.append(
+                                    msgLog(lexema, self.final, self.atual, linha_cont, coluna))
+                                self.tokens.append(
+                                    token(lexema, self.final, self.atual, linha_cont, coluna))
+                                self.atual = 'q0'
+                                lexema = ''
+                        elif self.atual == 'q38' and coluna+1 < len(linha):
+                            if self.ftransicao(self.atual, linha[coluna+1]) is not None:
+                                self.atual = 'q38'
+                            else:
+                                self.log.append(
+                                    msgLog(lexema, self.final, self.atual, linha_cont, coluna))
+                                self.tokens.append(
+                                    token(lexema, self.final, self.atual, linha_cont, coluna))
+                                self.atual = 'q0'
+                                lexema = ''
                         else:
                             self.log.append(
                                 msgLog(lexema, self.final, self.atual, linha_cont, coluna))
