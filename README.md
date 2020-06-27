@@ -1,27 +1,37 @@
-# Compilador
-Linguagem própria desenvolvida e código gerado em assembly para ARM Raspberry Pi 3 como trabalho para a disciplina de Compiladores ministrada pelo Professor Ed'Wilson Tavares Ferreira.
+# CK Compiler
 
-## Requerimentos
+CK Compiler is an instructions generator to Assembly language, developed to complete the Compiler discipline taught by Ed'Wilson Ferreira at Federal Institute of Mato Grosso.
+
+## Requirements
 
 * Python 3
-* Raspberry Pi 3 ou Emulador para compilar o código gerado
 
-## Como usar
+## Let's get started
 
-1. Clone o repositório utilizando o Git<br />
-```git clone https://github.com/douglasbrandao/compiladores.git```
+Clone the repository
 
-2. Acesse a pasta pelo Terminal
+```bash
+git clone https://github.com/douglasbrandao/ck-compiler.git
+```
 
-3. Execute o exemplo abaixo<br />
-```py principal.py code1.txt -tudo```
+Go to the repository folder
+
+```bash
+cd ck-compiler
+```
+
+Try out this example below
+
+```bash
+python3 main.py code1.txt -tudo
+```
 
 > Após o principal.py é necessário sempre passar dois argumentos, sendo "file.txt" o arquivo no qual você quer gerar o código e após um argumento no qual você deseja fazer a verificação, seja a listagem dos tokens, análise sintática, semântica ou tudo que é o caso do exemplo.
 
-4. Para verificar todos os argumentos disponíveis para uso, faça:<br />
-```py principal.py -h```
+```bash
+py principal.py -h
+```
 
-
-## Autor
+## Author
 
 Douglas Frota Brandão - [douglasbrandao](https://github.com/douglasbrandao "Douglas Brandão")

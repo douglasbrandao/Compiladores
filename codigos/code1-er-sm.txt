@@ -1,7 +1,0 @@
-run
-integer f = 1;
-integer g = 0;
-integer num = f/g;
-num2 = f;
-display(num);
-exit
