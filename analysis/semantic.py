@@ -1,18 +1,14 @@
 class Semantic:
 
-    def __init__(self, tokens):
-        self.tokens = tokens
+    def __init__(self, lexical):
+        self.tokens = lexical.get_tokens()
         self.log = []
-
-    def get_tokens(self):
-        with open(self.tokens, 'r') as tokens:
-            return tokens.readlines()
 
     def analysis(self):
 
         c = 0
         variables = variables_assigned_with_zero = []
-        tokens = self.get_tokens()
+        tokens = self.tokens
 
         for index, token in enumerate(tokens):
             lexeme, token, line, column = token.split('|')

@@ -1,11 +1,11 @@
-from code_generation.utils.infix_to_postfix import infix_to_postfix
-from code_generation.utils.tac import tac
+from generation.utils.infix_to_postfix import infix_to_postfix
+from generation.utils.tac import tac
 
 
 class Intermediate:
 
-    def __init__(self, tokens):
-        self.tokens = tokens
+    def __init__(self, lexical):
+        self.tokens = lexical.get_tokens()
         self.log = []
 
     def check_operator(self, op):
@@ -21,10 +21,6 @@ class Intermediate:
 
         if op in operators:
             return operators[op]
-
-    def get_tokens(self):
-        with open(self.tokens, "r") as tokens:
-            return tokens.readlines()
 
     def check_expression(self, tokens, index):
 
@@ -82,7 +78,7 @@ class Intermediate:
     def generation(self):
 
         loop = cond = index = 0
-        tokens = [token.split('|') for token in self.get_tokens()]
+        tokens = [token.split('|') for token in self.tokens]
 
         for c, token in enumerate(tokens):
             if token[1] == 'id' and tokens[c-1][1] == 'tiponum':
@@ -99,6 +95,5 @@ class Intermediate:
         for code in self.log:
             print(code)
 
-    def save(self):
-        with open('intermediario.itm', 'w') as intermediate:
-            intermediate.writelines('\n'.join(self.log))
+    def get_code(self):
+        return self.log

@@ -4,10 +4,11 @@ from analysis.utils.production_list import production_list
 
 class Syntactic:
 
-    def __init__(self, table, tokens):
+    def __init__(self, table, lexical):
         self.logs = []
         self.table = table
-        self.tokens = tokens
+        self.error = ''
+        self.tokens = lexical.get_tokens()
 
     def get_production_key(self, top, token):
         with open(f'syntactic_table/{self.table}') as syntactic_table:
@@ -21,16 +22,12 @@ class Syntactic:
         if key in productions:
             return productions[key]
 
-    def get_tokens(self):
-        with open(self.tokens) as tokens:
-            return [token.split('|') for token in tokens.readlines()]
-
     def analysis(self):
 
         index = 0
         stack = ['$', '<FORMATO_PROGRAMA>']
 
-        queue = self.get_tokens()
+        queue = [token.split('|') for token in self.tokens]
         tokens_queue = [token[1] for token in queue]
         tokens_queue.append('$')
 
@@ -60,13 +57,13 @@ class Syntactic:
                     elif top_of_stack == 'î':
                         self.logs.append(f'Popping: {stack.pop()}')
                     else:
-                        print(f'ERROR -> {queue[index-1][0]}|{queue[index-1][2]}|{queue[index-1][3].strip()}')
+                        self.error = f'ERROR -> {queue[index-1][0]}|{queue[index-1][2]}|{queue[index-1][3].strip()}'
                         break
             else:
                 if index == len(queue):
-                    print(f'ERROR -> {queue[index-1][0]}|{queue[index-2][2]}|{queue[index-1][3].strip()}')
+                    self.error = f'ERROR -> {queue[index-1][0]}|{queue[index-2][2]}|{queue[index-1][3].strip()}'
                 else:
-                    print(f'ERROR -> {queue[index-1][0]}|{queue[index-1][2]}|{queue[index-1][3].strip()}')
+                    self.error = f'ERROR -> {queue[index-1][0]}|{queue[index-1][2]}|{queue[index-1][3].strip()}'
                 break
 
     def show(self):

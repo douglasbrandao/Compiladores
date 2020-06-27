@@ -137,6 +137,5 @@ class Lexical:
     def get_errors(self):
         return self.errors
 
-    def save(self, name):
-        with open(f'{name}', "w") as tokens:
-            tokens.write('\n'.join(self.log))
+    def get_tokens(self):
+        return self.log

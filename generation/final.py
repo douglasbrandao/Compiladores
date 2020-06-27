@@ -1,7 +1,7 @@
 class Final:
 
     def __init__(self, intermediate):
-        self.intermediate = intermediate
+        self.intermediate = intermediate.get_code()
         self.final = []
 
     def generate_final(self, intermediate):
@@ -110,9 +110,7 @@ class Final:
         return data + main + end
 
     def generation(self):
-        with open(self.intermediate, 'r') as intermediate_list:
-            intermediate = intermediate_list.readlines()
-            self.final = self.generate_final(intermediate)
+        self.final = self.generate_final(self.intermediate)
 
     def save(self):
         with open('codigo.s', 'w') as file:
