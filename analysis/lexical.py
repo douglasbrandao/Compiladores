@@ -6,7 +6,7 @@ class Lexical:
     def __init__(self, code, transition_file="list.txt"):
         self.log = []
         self.code = code
-        self.errors = 0
+        self.error = ''
         self.transitions = transition_file
 
     def code_lines_to_list(self):
@@ -123,19 +123,17 @@ class Lexical:
                             lexeme = ''
                     # Caso não exista nos estados finais, então não é um token válido
                     elif not current_state:
-                        print(f'LEXICAL ERROR -> This symbol {lexeme} at {number_lines}|{column+1} doesn\'t exist')
+                        self.error = f'LEXICAL ERROR -> This symbol {lexeme} at {number_lines}|{column+1} doesn\'t exist'
                         current_state = 'q0'
-                        self.errors += 1
                         lexeme = ''
             number_lines += 1
 
-    def show_tokens(self):
-        if not self.errors:
+    def show(self):
+        if self.error:
+            print(self.error)
+        else:
             for token in self.log:
                 print(token)
-
-    def get_errors(self):
-        return self.errors
 
     def get_tokens(self):
         return self.log

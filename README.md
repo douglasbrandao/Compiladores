@@ -2,6 +2,21 @@
 
 CK Compiler is an instructions generator to Assembly language, developed to complete the Compiler discipline taught by Ed'Wilson Ferreira at Federal Institute of Mato Grosso.
 
+## The CK Language
+
+```python
+run # code started
+integer n = 1;
+integer j; # declare variables
+input(j); # read strings or variables
+while(n < j){ # loop
+  if(2 >= 3){ # conditional
+      display("teste\n"); # show strings or variables
+  }
+}
+exit # code finished
+```
+
 ## Requirements
 
 * Python 3
@@ -20,14 +35,18 @@ Go to the repository folder
 cd ck-compiler
 ```
 
-Try out this example below
+How to execute
 
 ```bash
-python3 main.py code1.txt -tudo
+python3 main.py [code] [args]
 ```
 
+> Some examples codes were made available in Examples folder
+
+To see all the arguments and how to use just add *-h* argument
+
 ```bash
-py main.py -h
+python3 main.py -h
 ```
 
 ## Author
