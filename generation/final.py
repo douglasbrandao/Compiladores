@@ -112,8 +112,8 @@ class Final:
     def generation(self):
         self.final = self.generate_final(self.intermediate)
 
-    def save(self):
-        with open('codigo.s', 'w') as file:
+    def save(self, name):
+        with open(f'output/{name}.s', 'w') as file:
             file.write('\n'.join(self.final))
 
     def show(self):

@@ -26,10 +26,8 @@ Try out this example below
 python3 main.py code1.txt -tudo
 ```
 
-> Após o principal.py é necessário sempre passar dois argumentos, sendo "file.txt" o arquivo no qual você quer gerar o código e após um argumento no qual você deseja fazer a verificação, seja a listagem dos tokens, análise sintática, semântica ou tudo que é o caso do exemplo.
-
 ```bash
-py principal.py -h
+py main.py -h
 ```
 
 ## Author

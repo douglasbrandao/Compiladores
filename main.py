@@ -57,4 +57,5 @@ if __name__ == '__main__':
         final = Final(intermediate)
         final.generation()
         final.show()
-        final.save()
+        file_name = input('What name do you want to save your output file? ')
+        final.save(file_name)
